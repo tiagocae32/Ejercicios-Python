@@ -81,12 +81,15 @@ def pedirNumerosProducto():
     mostrarProducto(multiplicando, multiplicador)
 
 
+# 2.3
+
+
 # 2.4
 def calcularLimite(numeroInferior,numeroSuperior):
     numeroEntre = random.randint(numeroInferior,numeroSuperior)
     return numeroEntre
 
-# 2.5
+# 2.4
 def numeroAleatorio():
      numeroInferior = int(input("Ingrese el limite inferior: "))
      numeroSuperior = int(input("Ingrese el limite superior: "))
@@ -157,16 +160,16 @@ def ingresarNumeroEvaluacion():
  # 3.3
 def validarFecha(dia,mes,anio):
     bisiesto = (anio % 4 == 0 and anio % 100 != 0) or (anio % 400 == 0)
-    validMesDia = dia > 0 and dia <= 31 and mes <= 12
-    print("Es bisiesto", bisiesto)
-    if(mes == 2 and bisiesto and dia <= 29 and validMesDia):
-        valido = True
-    elif(mes == 2 and bisiesto != True and dia <= 28 and validMesDia):
-        valido = True
-    elif(validMesDia):
-        valido = True
-    else:
+    validMesDia = (dia > 0 and dia <= 31 and mes > 0 and  mes <= 12) 
+   
+    if(bisiesto != True and mes == 2 and dia > 28):
         valido = False
+    elif(bisiesto and mes == 2 and dia > 29):
+        valido = False
+    elif(validMesDia != True):
+        valido = False
+    else:
+        valido = True
     
     return valido
     
@@ -280,8 +283,8 @@ def main():
     # 3 Condicionales
     #calculadora()  3.1
     #ingresarNumeroEvaluacion() #3.2
-    #ingresarFecha() #3.3
-    ingresarNumerosExtremos() # 3.4
+    ingresarFecha() #3.3
+    #ingresarNumerosExtremos() # 3.4
     #ingresarInformacionSueldo() # 3.5
    
 
