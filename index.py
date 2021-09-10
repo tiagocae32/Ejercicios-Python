@@ -160,13 +160,16 @@ def ingresarNumeroEvaluacion():
  # 3.3
 def validarFecha(dia,mes,anio):
     bisiesto = (anio % 4 == 0 and anio % 100 != 0) or (anio % 400 == 0)
-    validMesDia = (dia > 0 and dia <= 31 and mes > 0 and  mes <= 12) 
+    validMesDia = (dia > 0 and dia <= 31 and mes > 0 and  mes <= 12)
+    mes30 = (dia<1 or dia > 30 and (mes==4 or mes==6 or mes==9 or mes==11)) 
    
     if(bisiesto != True and mes == 2 and dia > 28):
         valido = False
     elif(bisiesto and mes == 2 and dia > 29):
         valido = False
     elif(validMesDia != True):
+        valido = False
+    elif(mes30):
         valido = False
     else:
         valido = True
@@ -183,8 +186,45 @@ def ingresarFecha():
       print(fechaValida) 
 
 
+def mayor(numeroUno,numeroDos,numeroTres):
+    mayor = numeroUno
+    if(numeroDos > numeroUno and numeroDos > numeroTres):
+        mayor = numeroDos
+    else:
+        mayor = numeroTres
+    return mayor
+
+def menor(numeroUno,numeroDos,numeroTres):
+    #menor = numeroUno
+    if(numeroUno < numeroDos and numeroUno < numeroTres):
+        menor = numeroUno
+    elif(numeroDos < numeroUno and numeroDos < numeroTres):
+        menor = numeroDos
+    else:
+        menor = numeroTres
+    return menor      
+
+
 #3.4
 def validarDistanciaNumeros(numeroUno,numeroDos,numeroTres):
+    restante = None
+    a = mayor(numeroUno,numeroDos,numeroTres)
+    b = menor(numeroUno,numeroDos,numeroTres)
+    if(numeroUno != a and numeroUno != b):
+        restante = numeroUno
+    elif(numeroDos != a and numeroDos != b):
+        restante = numeroDos
+    else:
+        numeroTres
+
+    if((a + b) / restante == 2):
+        distancia = True
+    else:
+        distancia = False
+    return distancia
+
+
+    '''
     if(numeroUno > numeroDos and numeroUno > numeroTres):
         if(numeroDos > numeroTres):
             numeroMayor = numeroUno
@@ -211,11 +251,7 @@ def validarDistanciaNumeros(numeroUno,numeroDos,numeroTres):
         else:
             numeroMenor = numeroUno
             numeroRestante = numeroDos
-    if((numeroMenor + numeroMayor) / numeroRestante == 2):
-        distancia = "Si"
-    else:
-        distancia = "No"
-    return distancia
+    '''
 
 
 # 3.4
@@ -224,7 +260,10 @@ def ingresarNumerosExtremos():
     numeroDos = int(input("Ingrese el numero dos: "))
     numeroTres = int(input("Ingrese el numero tres: "))
     resultado = validarDistanciaNumeros(numeroUno,numeroDos,numeroTres)
-    print(resultado)
+    if(resultado):
+        print("Estan igualmente distanciados")
+    else:
+        print("No estan igualmente distanciados")
 
 # 3.5
 def bono(sueldoBase):
@@ -254,7 +293,7 @@ def plusC(sueldoBase,categoria):
 def plus(sueldoBase,tieneHijos,categoria):
     plusHijos = plusH(sueldoBase,tieneHijos)
     plusCategoria = plusC(sueldoBase,categoria)
-    if(tieneHijos == "si" and (categoria != "7" and categoria != "8" and categoria != "9")):
+    if(tieneHijos == "si" and (categoria != 7 and categoria != 8 and categoria != 9)):
        plusFinal = plusHijos + plusCategoria
     else:
         plusFinal = plusCategoria
@@ -276,15 +315,17 @@ def main():
     #areaPerimetroRectangulo() 1.2
     #operaciones() 1.3
     #parteRealYEntera() 1.4
+
     # 2 Funciones
     #pedirSegundos() 2.1
     #pedirNumerosProducto 2.2
     #numeroAleatorio()  #2.4
+
     # 3 Condicionales
     #calculadora()  3.1
     #ingresarNumeroEvaluacion() #3.2
-    ingresarFecha() #3.3
-    #ingresarNumerosExtremos() # 3.4
+    #ingresarFecha() #3.3
+    ingresarNumerosExtremos() # 3.4
     #ingresarInformacionSueldo() # 3.5
    
 
