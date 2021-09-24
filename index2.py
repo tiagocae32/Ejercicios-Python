@@ -88,19 +88,48 @@ def esPrimo(n):
 	if(n<2):
 		return False
 	root=int(math.sqrt(n))
-	for a in range(2,root+1):
-		if n % a==0:
+	for a in range(2,root + 1):
+		if n % a == 0:
 			return False
 	return True
 
 
+#4.5
 def listadoNumerosSiniestros(numero):
     print("Numero primos entre 1 y ", numero)
     i = 1
-    while(i <= numero):
+    while(i < numero):
         i+=1
-        if(esPrimo(numero)):
+        if(esPrimo(i)):
             print(i)
+    
+#4.5
+def generacionNumerosPrimos(numero):
+    i=2
+    while(numero > 0):
+        divisor = 2
+        while(divisor < i and i % divisor != 0):
+            print("I", i)
+            print("Divisor", divisor)
+            divisor +=1
+        if(divisor == i):
+            if(i != 2):
+                print(", ")
+            print(i)
+            numero-=1
+        i+=1
+       
+
+#4.5
+def primerosCapicuas(numero):
+    return
+
+
+#4.6
+def capicua(numero):
+    for i in numero:
+        print(i)
+
 
 
 
@@ -110,8 +139,10 @@ def main():
     #secuenciaFor(4,20,4) 4.2
     #secuenciaWhile(4,20,4) 4.3
     #pedirDatosSecuenciaPlus() 4.4
-    resultado = esPrimo(2)
-    print(resultado)
-    #resultado= listadoNumerosSiniestros(57)
-    #print(resultado)
+    #resultado = esPrimo(2) #4.5
+    #listadoNumerosSiniestros(8) #4.5
+    generacionNumerosPrimos(8)
+    #primerosCapicuas(57) #4.6
+    #capicua(str(121))
+
 main()
