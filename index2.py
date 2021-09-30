@@ -96,11 +96,10 @@ def esPrimo(n):
 
 def listadoNumerosSiniestros(numero):
     print("Numero primos entre 1 y ", numero)
-    i = 1
-    while(i <= numero):
-        i+=1
-        if(esPrimo(numero)):
-            print(i)
+    for i in range(2,numero):
+        if(numero % i == 1):
+            print("Es primo")
+        
 
 
 
@@ -110,7 +109,7 @@ def main():
     #secuenciaFor(4,20,4) 4.2
     #secuenciaWhile(4,20,4) 4.3
     #pedirDatosSecuenciaPlus() 4.4
-    resultado = esPrimo(2)
+    resultado = esPrimo(26)
     print(resultado)
     #resultado= listadoNumerosSiniestros(57)
     #print(resultado)
